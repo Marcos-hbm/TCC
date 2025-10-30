@@ -7,11 +7,17 @@ include __DIR__ . '/../../includes/header.php';
 $result = $mysqli->query("SELECT id, nome, cnpj, email, telefone FROM empresas ORDER BY id DESC");
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0">Empresas</h1>
+	<h1 class="h3 mb-0"><i class="bi bi-building me-2"></i>Empresas</h1>
 	<div class="d-flex gap-2">
-		<a class="btn btn-success" href="/sistema_escalacao/public/eventos/form.php">Criar Eventos</a>
-		<a class="btn btn-outline-primary" href="/sistema_escalacao/public/eventos/index.php">Ver Eventos</a>
-		<a class="btn btn-primary" href="/sistema_escalacao/public/empresas/form.php">Nova Empresa</a>
+		<a class="btn btn-success" href="/sistema_escalacao/public/eventos/form.php">
+			<i class="bi bi-plus-circle me-1"></i>Criar Eventos
+		</a>
+		<a class="btn btn-outline-primary" href="/sistema_escalacao/public/eventos/index.php">
+			<i class="bi bi-calendar-check me-1"></i>Ver Eventos
+		</a>
+		<a class="btn btn-primary" href="/sistema_escalacao/public/empresas/form.php">
+			<i class="bi bi-building-add me-1"></i>Nova Empresa
+		</a>
 	</div>
 </div>
 <div class="card">
@@ -37,13 +43,19 @@ $result = $mysqli->query("SELECT id, nome, cnpj, email, telefone FROM empresas O
 							<td><?= htmlspecialchars($row['email']) ?></td>
 							<td><?= htmlspecialchars($row['telefone']) ?></td>
 						<td class="text-end table-actions">
-							<a class="btn btn-sm btn-outline-secondary" href="/sistema_escalacao/public/empresas/form.php?id=<?= (int)$row['id'] ?>">Editar</a>
-							<a class="btn btn-sm btn-outline-primary" href="/sistema_escalacao/public/empresas/profile.php?id=<?= (int)$row['id'] ?>">Perfil</a>
-								<form action="/sistema_escalacao/public/empresas/delete.php" method="post" class="d-inline" onsubmit="return confirm('Deseja realmente excluir esta empresa?');">
-									<input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
-									<button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
-								</form>
-							</td>
+							<a class="btn btn-sm btn-outline-secondary" href="/sistema_escalacao/public/empresas/form.php?id=<?= (int)$row['id'] ?>">
+								<i class="bi bi-pencil"></i> Editar
+							</a>
+							<a class="btn btn-sm btn-outline-primary" href="/sistema_escalacao/public/empresas/profile.php?id=<?= (int)$row['id'] ?>">
+								<i class="bi bi-eye"></i> Perfil
+							</a>
+							<form action="/sistema_escalacao/public/empresas/delete.php" method="post" class="d-inline" onsubmit="return confirm('Deseja realmente excluir esta empresa?');">
+								<input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
+								<button type="submit" class="btn btn-sm btn-outline-danger">
+									<i class="bi bi-trash"></i> Excluir
+								</button>
+							</form>
+						</td>
 						</tr>
 					<?php endwhile; ?>
 					<?php if ($result->num_rows === 0): ?>
