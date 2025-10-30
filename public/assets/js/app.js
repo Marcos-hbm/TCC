@@ -1,0 +1,17 @@
+(function(){
+	'use strict';
+	function onlyDigits(value){ return (value||'').replace(/\D+/g, ''); }
+	window.applyCpfMask = function(input){
+		if(!input) return;
+		input.addEventListener('input', function(){
+			let v = onlyDigits(input.value).slice(0,11);
+			let p1=v.slice(0,3), p2=v.slice(3,6), p3=v.slice(6,9), p4=v.slice(9,11);
+			let out='';
+			if(p1) out += p1;
+			if(p2) out += '.'+p2;
+			if(p3) out += '.'+p3;
+			if(p4) out += '-'+p4;
+			input.value = out;
+		});
+	};
+})();
