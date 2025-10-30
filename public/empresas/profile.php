@@ -22,8 +22,10 @@ if (!$empresa) {
 $fotoUrl = $empresa['foto_path'] ? '/sistema_escalacao/' . ltrim($empresa['foto_path'], '/') : 'https://via.placeholder.com/200x200?text=Logo';
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0">Perfil da Empresa</h1>
-	<a class="btn btn-outline-secondary" href="/sistema_escalacao/public/empresa/dashboard.php">Voltar</a>
+	<h1 class="h3 mb-0"><i class="bi bi-building me-2"></i>Perfil da Empresa</h1>
+	<a class="btn btn-outline-secondary" href="/sistema_escalacao/public/empresa/dashboard.php">
+		<i class="bi bi-arrow-left me-1"></i>Voltar
+	</a>
 </div>
 <div class="row g-4">
 	<div class="col-md-3 col-lg-2">
@@ -33,10 +35,12 @@ $fotoUrl = $empresa['foto_path'] ? '/sistema_escalacao/' . ltrim($empresa['foto_
 				<form action="/sistema_escalacao/public/empresas/upload_logo.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="<?= (int)$empresa['id'] ?>">
 					<div class="mb-3 text-start">
-						<label class="form-label">Alterar logo (JPG ou PNG, até 2MB)</label>
+						<label class="form-label"><i class="bi bi-image me-1"></i>Alterar logo (JPG ou PNG, até 2MB)</label>
 						<input type="file" name="foto" accept="image/jpeg,image/png" class="form-control" required>
 					</div>
-					<button type="submit" class="btn btn-primary w-100">Enviar</button>
+					<button type="submit" class="btn btn-primary w-100">
+						<i class="bi bi-upload me-1"></i>Enviar
+					</button>
 				</form>
 			</div>
 		</div>

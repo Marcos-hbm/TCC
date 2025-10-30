@@ -1,0 +1,43 @@
+# PHP
+*.log
+*.cache
+*.tmp
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment files
+.env
+.env.local
+config/db_local.php
+
+# Uploads (depends on project needs - may want to track)
+# public/uploads/*
+# !public/uploads/.gitkeep
+
+# Dependencies (if using Composer in future)
+vendor/
+composer.phar
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Session files
+/tmp/*
+!/tmp/.gitkeep
+
+# Backup files
+*.bak
+*.backup
+*~
