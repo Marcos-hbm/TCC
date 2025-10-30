@@ -25,7 +25,6 @@ vendor/
 composer.phar
 
 # OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
@@ -40,4 +39,3 @@ Thumbs.db
 # Backup files
 *.bak
 *.backup
-*~
