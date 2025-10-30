@@ -25,10 +25,12 @@ if ($id > 0) {
 		exit;
 	}
 }
+$pageTitle = $id ? 'Editar Empresa' : 'Nova Empresa';
+$pageIcon = $id ? 'bi-pencil' : 'bi-plus-circle';
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0"><?= $id ? 'Editar Empresa' : 'Nova Empresa' ?></h1>
-	<a class="btn btn-outline-secondary" href="/sistema_escalacao/public/empresa/dashboard.php">Voltar</a>
+	<h1 class="h3 mb-0"><i class="bi <?= $pageIcon ?> me-2"></i><?= $pageTitle ?></h1>
+	<a class="btn btn-outline-secondary" href="/sistema_escalacao/public/empresa/dashboard.php"><i class="bi bi-arrow-left me-2"></i>Voltar</a>
 </div>
 <form action="/sistema_escalacao/public/empresas/save.php" method="post" class="card needs-validation" novalidate>
 	<div class="card-body">

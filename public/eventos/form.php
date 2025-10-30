@@ -26,9 +26,11 @@ if ($id > 0) {
 		exit;
 	}
 }
+$pageTitle = $id ? 'Editar Evento' : 'Criar Evento';
+$pageIcon = $id ? 'bi-pencil' : 'bi-plus-circle';
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-<h1 class="h3 mb-0"><?= $id ? '<i class="bi bi-pencil me-2"></i>Editar Evento' : '<i class="bi bi-plus-circle me-2"></i>Criar Evento' ?></h1>
+<h1 class="h3 mb-0"><i class="bi <?= $pageIcon ?> me-2"></i><?= $pageTitle ?></h1>
     <a class="btn btn-outline-secondary" href="/sistema_escalacao/public/eventos/index.php"><i class="bi bi-arrow-left me-2"></i>Voltar</a>
 </div>
 <form action="/sistema_escalacao/public/eventos/save.php" method="post" class="card needs-validation" novalidate>
