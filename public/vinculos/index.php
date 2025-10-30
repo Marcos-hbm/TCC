@@ -49,8 +49,8 @@ if ($q !== '') {
 }
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Vínculos</h1>
-    <a class="btn btn-outline-secondary" href="<?= $isEmpresa ? '/sistema_escalacao/public/empresa/dashboard.php' : '/sistema_escalacao/public/users/index.php' ?>">Voltar</a>
+    <h1 class="h3 mb-0"><i class="bi bi-link-45deg me-2"></i>Vínculos</h1>
+    <a class="btn btn-outline-secondary" href="<?= $isEmpresa ? '/sistema_escalacao/public/empresa/dashboard.php' : '/sistema_escalacao/public/users/index.php' ?>"><i class="bi bi-arrow-left me-2"></i>Voltar</a>
 </div>
 <form class="card mb-3" method="get">
     <div class="card-body">
@@ -97,7 +97,7 @@ if ($q !== '') {
 <div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-striped table-hover mb-0">
+            <table class="table table-dark table-striped table-hover mb-0">
                 <thead>
                     <tr>
                         <th><?= $isEmpresa ? 'Usuário' : 'Empresa' ?></th>
@@ -116,8 +116,8 @@ if ($q !== '') {
                                 <?php if ($v['status']==='pendente'): ?>
                                     <form class="d-inline" method="post" action="/sistema_escalacao/public/vinculos/respond.php">
                                         <input type="hidden" name="id" value="<?= (int)$v['id'] ?>">
-                                        <button name="acao" value="aprovar" class="btn btn-sm btn-success">Aprovar</button>
-                                        <button name="acao" value="recusar" class="btn btn-sm btn-outline-danger">Recusar</button>
+                                        <button name="acao" value="aprovar" class="btn btn-sm btn-success"><i class="bi bi-check-circle me-1"></i>Aprovar</button>
+                                        <button name="acao" value="recusar" class="btn btn-sm btn-outline-danger"><i class="bi bi-x-circle me-1"></i>Recusar</button>
                                     </form>
                                 <?php else: ?>
                                     <span class="text-muted small">Sem ações</span>
