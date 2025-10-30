@@ -18,8 +18,8 @@ $stmt->execute();
 $res = $stmt->get_result();
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Eventos disponíveis</h1>
-    <a class="btn btn-outline-secondary" href="/sistema_escalacao/public/users/index.php">Voltar</a>
+    <h1 class="h3 mb-0"><i class="bi bi-compass me-2"></i>Eventos Disponíveis</h1>
+    <a class="btn btn-outline-secondary" href="/sistema_escalacao/public/users/index.php"><i class="bi bi-arrow-left me-2"></i>Voltar</a>
 </div>
 <div class="row g-3">
     <?php while ($ev = $res->fetch_assoc()): ?>
@@ -27,10 +27,10 @@ $res = $stmt->get_result();
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="h6 mb-1"><?= htmlspecialchars($ev['nome']) ?></h2>
-                    <p class="text-muted small mb-2">Empresa: <?= htmlspecialchars($ev['empresa_nome']) ?> · <?= htmlspecialchars($ev['data_fmt']) ?></p>
+                    <p class="text-muted small mb-2"><i class="bi bi-building me-1"></i><?= htmlspecialchars($ev['empresa_nome']) ?> · <i class="bi bi-calendar-event me-1"></i><?= htmlspecialchars($ev['data_fmt']) ?></p>
                     <form method="post" action="/sistema_escalacao/public/eventos/apply.php" class="d-grid">
                         <input type="hidden" name="evento_id" value="<?= (int)$ev['id'] ?>">
-                        <button type="submit" class="btn btn-sm btn-success">Inscrever-se</button>
+                        <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-check-circle me-1"></i>Inscrever-se</button>
                     </form>
                 </div>
             </div>
