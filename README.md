@@ -16,12 +16,14 @@ c:\xampp\htdocs\sistema_escalacao\
   │  └─ schema.sql
   ├─ includes\
   │  ├─ auth_guard.php
-  │  ├─ footer.php       (rodapé com Bootstrap 5)
-  │  └─ header.php       (cabeçalho com navbar dark e sidebar)
+  │  ├─ footer.php
+  │  └─ header.php (layout base com Bootstrap 5 e dark theme)
   └─ public\
      ├─ assets\
-     │  ├─ css\styles.css  (tema escuro customizado)
-     │  └─ js\app.js       (máscaras de CPF/CNPJ/telefone)
+     │  ├─ css\
+     │  │  ├─ custom.css (tema escuro personalizado)
+     │  │  └─ styles.css (legado)
+     │  └─ js\app.js
      ├─ auth\ (login/logout)
      ├─ empresa\ (dashboard da empresa)
      ├─ empresas\ (CRUD de empresas e upload de logo)
@@ -62,91 +64,139 @@ c:\xampp\htdocs\sistema_escalacao\
 - `config/db.php`: ajuste as credenciais do MySQL.
 - Permissões de pasta `public/uploads/`: deve permitir escrita pelo servidor web.
 
-## UI e Design System
+## UI Stack e Estilo
 
-### Tema Dark
-O sistema utiliza um tema escuro (dark theme) consistente com paleta centrada em preto:
-- **Background principal**: `#0b0d10` (near-black)
-- **Superfícies**: `#0f1115`, `#111317`, `#1a1d21`
-- **Texto**: `#e5e7eb` (cinza claro de alto contraste)
-- **Acento primário**: `#0ea5e9` (cyan)
-- **Status colors**: Verde `#22c55e`, Vermelho `#ef4444`, Amarelo `#f59e0b`, Ciano `#06b6d4`
+### Framework e Componentes
+- **Bootstrap 5.3.3** (via CDN) - framework CSS responsivo
+- **Bootstrap Icons 1.11.3** (via CDN) - biblioteca de ícones
+- **Inter Font** (Google Fonts) - tipografia moderna
+- **custom.css** - tema escuro personalizado com paleta preta
 
-### Stack de UI
-- **Bootstrap 5.3.3** (CDN) - Framework CSS com componentes responsivos
-- **Bootstrap Icons 1.11.3** (CDN) - Biblioteca de ícones
-- **Google Fonts Inter** - Tipografia moderna e legível
+### Tema Escuro
+O sistema utiliza um tema escuro moderno com as seguintes cores:
+- **Background principal**: `#0b0d10` (preto quase absoluto)
+- **Superfícies**: `#0f1115`, `#111317`, `#1a1d21` (tons de preto elevados)
+- **Texto principal**: `#e5e7eb` (cinza claro para contraste)
+- **Cor primária (accent)**: `#0ea5e9` (ciano/azul claro)
+- **Secundária**: `#9ca3af` (cinza neutro)
+- **Success**: `#22c55e` (verde)
+- **Danger**: `#ef4444` (vermelho)
+- **Warning**: `#f59e0b` (laranja)
+- **Info**: `#06b6d4` (ciano)
+- **Bordas**: `#2a2f36` (cinza escuro)
 
-### Como Criar Páginas
+### Como Criar Novas Páginas com o Layout
 
-Para criar novas páginas que usem o layout padrão:
+#### Páginas Autenticadas
+Para páginas que requerem autenticação, use o padrão:
 
-1. **Incluir o cabeçalho no início**:
-   ```php
-   <?php
-   require_once __DIR__ . '/../../config/db.php';
-   require_once __DIR__ . '/../../includes/auth_guard.php';
-   // Adicione guards conforme necessário (require_user, require_company, etc)
-   include __DIR__ . '/../../includes/header.php';
-   ?>
-   ```
-
-2. **Usar componentes Bootstrap 5** com classes dark-theme:
-   - Cards: `<div class="card">` (automaticamente com fundo escuro)
-   - Tabelas: `<table class="table table-striped table-hover">` 
-   - Formulários: `<input class="form-control">`, `<select class="form-select">`
-   - Botões: `<button class="btn btn-primary">`, `.btn-success`, `.btn-danger`, `.btn-outline-secondary`
-   - Alertas: `<div class="alert alert-success">`, `.alert-danger`, `.alert-warning`
-
-3. **Usar ícones Bootstrap Icons**:
-   ```html
-   <i class="bi bi-calendar-event"></i>
-   <i class="bi bi-person-circle"></i>
-   <i class="bi bi-building"></i>
-   ```
-   Veja lista completa em: https://icons.getbootstrap.com/
-
-4. **Incluir o rodapé no final**:
-   ```php
-   <?php include __DIR__ . '/../../includes/footer.php'; ?>
-   ```
-
-### Estrutura de Página Padrão
 ```php
 <?php
 require_once __DIR__ . '/../../config/db.php';
 require_once __DIR__ . '/../../includes/auth_guard.php';
-require_user(); // ou require_company() conforme necessário
+require_user(); // ou require_company() ou require_user_or_company()
 include __DIR__ . '/../../includes/header.php';
 
-// Seu código PHP aqui
-?>
+// Seu código PHP e HTML aqui
+// O layout já inclui Bootstrap, ícones e o tema escuro
 
+// Exemplo de estrutura:
+?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Título da Página</h1>
-    <a class="btn btn-primary" href="#">Ação</a>
+    <h1 class="h3 mb-0"><i class="bi bi-icon-name me-2"></i>Título da Página</h1>
+    <a class="btn btn-primary" href="#">Ação Principal</a>
 </div>
 
 <div class="card">
     <div class="card-body">
-        <!-- Seu conteúdo aqui -->
+        <!-- Conteúdo -->
     </div>
 </div>
 
 <?php include __DIR__ . '/../../includes/footer.php'; ?>
 ```
 
-### Validação de Formulários
-Usar classe `.needs-validation` no form e adicionar script de validação Bootstrap 5:
-```html
-<form class="needs-validation" novalidate>
-    <input type="text" class="form-control" required>
-    <div class="invalid-feedback">Mensagem de erro</div>
-</form>
+#### Páginas Públicas (ex: Login)
+Para páginas que não usam o layout padrão:
+
+```php
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Título - Sistema de Escalação</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="/sistema_escalacao/public/assets/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Seu conteúdo -->
+</body>
+</html>
 ```
+
+### Classes e Componentes Úteis
+
+#### Tabelas
+Use sempre `.table-dark` para consistência:
+```html
+<table class="table table-dark table-striped table-hover">
+```
+
+#### Formulários
+```html
+<div class="mb-3">
+    <label class="form-label">Campo</label>
+    <input type="text" class="form-control" required>
+</div>
+```
+
+#### Botões com Ícones
+```html
+<button class="btn btn-primary">
+    <i class="bi bi-plus-circle me-2"></i>Texto
+</button>
+```
+
+#### Cards
+```html
+<div class="card">
+    <div class="card-body">
+        Conteúdo
+    </div>
+</div>
+```
+
+#### Alerts
+```html
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    Mensagem de sucesso
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+```
+
+### Ícones Bootstrap
+Principais ícones utilizados:
+- `bi-calendar-event` - eventos
+- `bi-people` - usuários/parceiros
+- `bi-building` - empresas
+- `bi-link-45deg` - vínculos
+- `bi-plus-circle` - criar/adicionar
+- `bi-pencil` - editar
+- `bi-trash` - excluir
+- `bi-eye` - visualizar
+- `bi-arrow-left` - voltar
+- `bi-box-arrow-right` - sair
+- `bi-check-circle` - aprovar
+- `bi-x-circle` - recusar
+
+Veja todos os ícones em: https://icons.getbootstrap.com/
 
 ## Convenções
 - PHP procedural com includes para cabeçalho/rodapé/guards.
+- Layout base em `includes/header.php` e `includes/footer.php`.
+- Tema escuro em `public/assets/css/custom.css`.
 - Assets em `public/assets/`.
 - Endpoints públicos em `public/` (separados por módulo).
 - Use classes Bootstrap 5 ao invés de estilos inline.

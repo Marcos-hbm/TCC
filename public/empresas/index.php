@@ -23,7 +23,7 @@ $result = $mysqli->query("SELECT id, nome, cnpj, email, telefone FROM empresas O
 <div class="card">
 	<div class="card-body p-0">
 		<div class="table-responsive">
-			<table class="table table-striped table-hover mb-0">
+			<table class="table table-dark table-striped table-hover mb-0">
 				<thead>
 					<tr>
 						<th>ID</th>

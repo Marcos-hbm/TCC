@@ -7,13 +7,13 @@ include __DIR__ . '/../../includes/header.php';
 $result = $mysqli->query("SELECT id, nome, email, DATE_FORMAT(data_nascimento, '%d/%m/%Y') AS data_nascimento, cpf, telefone, genero FROM users ORDER BY id DESC");
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0">Usuários</h1>
-	<a class="btn btn-primary" href="/sistema_escalacao/public/users/form.php">Novo Usuário</a>
+	<h1 class="h3 mb-0"><i class="bi bi-people me-2"></i>Usuários</h1>
+	<a class="btn btn-primary" href="/sistema_escalacao/public/users/form.php"><i class="bi bi-plus-circle me-2"></i>Novo Usuário</a>
 </div>
 <div class="card">
 	<div class="card-body p-0">
 		<div class="table-responsive">
-			<table class="table table-striped table-hover mb-0">
+			<table class="table table-dark table-striped table-hover mb-0">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -37,11 +37,11 @@ $result = $mysqli->query("SELECT id, nome, email, DATE_FORMAT(data_nascimento, '
 							<td><?= htmlspecialchars($row['telefone']) ?></td>
 							<td><?= htmlspecialchars($row['genero']) ?></td>
 							<td class="text-end table-actions">
-							<a class="btn btn-sm btn-outline-secondary" href="/sistema_escalacao/public/users/form.php?id=<?= (int)$row['id'] ?>">Editar</a>
-							<a class="btn btn-sm btn-outline-primary" href="/sistema_escalacao/public/users/profile.php?id=<?= (int)$row['id'] ?>">Perfil</a>
+							<a class="btn btn-sm btn-outline-secondary" href="/sistema_escalacao/public/users/form.php?id=<?= (int)$row['id'] ?>"><i class="bi bi-pencil me-1"></i>Editar</a>
+							<a class="btn btn-sm btn-outline-primary" href="/sistema_escalacao/public/users/profile.php?id=<?= (int)$row['id'] ?>"><i class="bi bi-eye me-1"></i>Perfil</a>
 								<form action="/sistema_escalacao/public/users/delete.php" method="post" class="d-inline" onsubmit="return confirm('Deseja realmente excluir este usuário?');">
 									<input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
-									<button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+									<button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash me-1"></i>Excluir</button>
 								</form>
 							</td>
 						</tr>

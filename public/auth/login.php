@@ -53,7 +53,7 @@ require_once __DIR__ . '/../../config/db.php';
     })();
     </script>
     </head>
-<body>
+<body class="login-bg">
     <div class="container">
         <?php if (isset($_GET['msg']) && $_GET['msg'] !== ''): ?>
         <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">

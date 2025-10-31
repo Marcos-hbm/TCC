@@ -29,7 +29,7 @@ $res = $stmt->get_result();
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="h6 mb-1"><?= htmlspecialchars($ev['nome']) ?></h2>
-                    <p class="text-muted small mb-2">Empresa: <?= htmlspecialchars($ev['empresa_nome']) ?> · <?= htmlspecialchars($ev['data_fmt']) ?></p>
+                    <p class="text-muted small mb-2"><i class="bi bi-building me-1"></i><?= htmlspecialchars($ev['empresa_nome']) ?> · <i class="bi bi-calendar-event me-1"></i><?= htmlspecialchars($ev['data_fmt']) ?></p>
                     <form method="post" action="/sistema_escalacao/public/eventos/apply.php" class="d-grid">
                         <input type="hidden" name="evento_id" value="<?= (int)$ev['id'] ?>">
                         <button type="submit" class="btn btn-sm btn-success">

@@ -25,6 +25,8 @@ if ($id > 0) {
 		exit;
 	}
 }
+$pageTitle = $id ? 'Editar Empresa' : 'Nova Empresa';
+$pageIcon = $id ? 'bi-pencil' : 'bi-plus-circle';
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
 	<h1 class="h3 mb-0">

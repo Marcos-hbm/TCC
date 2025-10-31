@@ -72,7 +72,7 @@ $result = $stmt->get_result();
 <div class="card">
 	<div class="card-body p-0">
 		<div class="table-responsive">
-			<table class="table table-striped table-hover mb-0">
+			<table class="table table-dark table-striped table-hover mb-0">
 				<thead>
 					<tr>
 						<th>ID</th>
