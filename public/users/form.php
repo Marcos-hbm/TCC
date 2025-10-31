@@ -29,8 +29,13 @@ if ($id > 0) {
 }
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0"><?= $id ? 'Editar Usuário' : 'Novo Usuário' ?></h1>
-	<a class="btn btn-outline-secondary" href="/sistema_escalacao/public/users/index.php">Voltar</a>
+	<h1 class="h3 mb-0">
+		<i class="bi bi-<?= $id ? 'pencil' : 'person-plus' ?> me-2"></i>
+		<?= $id ? 'Editar Usuário' : 'Novo Usuário' ?>
+	</h1>
+	<a class="btn btn-outline-secondary" href="/sistema_escalacao/public/users/index.php">
+		<i class="bi bi-arrow-left me-1"></i>Voltar
+	</a>
 </div>
 <form action="/sistema_escalacao/public/users/save.php" method="post" class="card needs-validation" novalidate>
 	<div class="card-body">
@@ -84,11 +89,17 @@ if ($id > 0) {
 	<div class="card-footer d-flex justify-content-between align-items-center gap-2">
 		<div class="text-muted small">
 			<?php if ($id): ?>
-				Deixe a senha em branco para manter a atual.
+				<i class="bi bi-info-circle me-1"></i>Deixe a senha em branco para manter a atual.
 			<?php endif; ?>
 		</div>
-		<button type="submit" class="btn btn-primary">Salvar</button>
-		<a href="/sistema_escalacao/public/users/index.php" class="btn btn-outline-secondary">Cancelar</a>
+		<div class="d-flex gap-2">
+			<button type="submit" class="btn btn-primary">
+				<i class="bi bi-save me-1"></i>Salvar
+			</button>
+			<a href="/sistema_escalacao/public/users/index.php" class="btn btn-outline-secondary">
+				<i class="bi bi-x-circle me-1"></i>Cancelar
+			</a>
+		</div>
 	</div>
 </form>
 <script>
