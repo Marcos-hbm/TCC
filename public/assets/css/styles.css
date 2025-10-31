@@ -254,10 +254,12 @@ html {
 }
 
 .sidebar .list-group-item.active {
-    background-color: rgba(14, 165, 233, 0.15);
+    background-color: rgba(var(--bs-primary-rgb), 0.2);
     border-color: var(--bs-border-color);
     border-left-color: var(--bs-primary);
+    border-left-width: 4px;
     color: var(--bs-primary);
+    font-weight: 600;
 }
 
 .sidebar .list-group-item i {
@@ -392,43 +394,46 @@ main {
 
 /* Sidebar brand section */
 .sidebar-brand {
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(6, 182, 212, 0.05));
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.1), rgba(var(--bs-info-rgb), 0.05));
     transition: var(--transition-base);
 }
 
 .sidebar-brand:hover {
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(6, 182, 212, 0.1));
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.15), rgba(var(--bs-info-rgb), 0.1));
 }
 
 .sidebar-avatar {
+    border: 2px solid var(--bs-primary);
     transition: var(--transition-base);
 }
 
 .sidebar-avatar:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.3);
 }
 
 .sidebar-title {
+    color: var(--bs-primary);
+    font-weight: 700;
     transition: var(--transition-fast);
 }
 
 .sidebar-title:hover {
     color: var(--bs-link-hover-color) !important;
-    text-shadow: 0 0 8px rgba(14, 165, 233, 0.5);
+    text-shadow: 0 0 8px rgba(var(--bs-primary-rgb), 0.5);
 }
 
 /* Sidebar footer section */
 .sidebar-footer {
-    background: linear-gradient(180deg, transparent, rgba(14, 165, 233, 0.05));
+    background: linear-gradient(180deg, transparent, rgba(var(--bs-primary-rgb), 0.05));
 }
 
 /* Logout button styling */
 .logout-btn {
-    --bs-btn-color: #ef4444;
-    --bs-btn-border-color: #ef4444;
-    --bs-btn-hover-bg: #ef4444;
-    --bs-btn-hover-border-color: #ef4444;
+    --bs-btn-color: var(--bs-danger);
+    --bs-btn-border-color: var(--bs-danger);
+    --bs-btn-hover-bg: var(--bs-danger);
+    --bs-btn-hover-border-color: var(--bs-danger);
     --bs-btn-hover-color: white;
     border-width: 2px;
     font-weight: 600;
@@ -436,7 +441,7 @@ main {
 }
 
 .logout-btn:hover {
-    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 16px rgba(var(--bs-danger-rgb), 0.4);
     transform: translateY(-2px);
 }
 

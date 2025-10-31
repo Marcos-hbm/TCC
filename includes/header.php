@@ -52,9 +52,9 @@ if (!empty($_SESSION['user_id'])) {
 					}
 				?>
 				<?php if ($avatarUrl): ?>
-					<img src="<?= htmlspecialchars($avatarUrl) ?>" alt="avatar" class="rounded-circle sidebar-avatar" style="width:40px;height:40px;object-fit:cover;border:2px solid var(--bs-primary);">
+					<img src="<?= htmlspecialchars($avatarUrl) ?>" alt="avatar" class="rounded-circle sidebar-avatar" style="width:40px;height:40px;object-fit:cover;">
 				<?php endif; ?>
-				<a class="text-decoration-none h5 mb-0 sidebar-title" style="color: var(--bs-primary);font-weight:700;" href="<?= !empty($_SESSION['empresa_id']) ? '/sistema_escalacao/public/eventos/index.php' : '/sistema_escalacao/public/users/discover.php' ?>">
+				<a class="text-decoration-none h5 mb-0 sidebar-title" href="<?= !empty($_SESSION['empresa_id']) ? '/sistema_escalacao/public/eventos/index.php' : '/sistema_escalacao/public/users/discover.php' ?>">
 					<i class="bi bi-calendar-event me-1"></i>Sistema de Escalação
 				</a>
 			</div>
