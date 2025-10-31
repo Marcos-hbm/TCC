@@ -242,7 +242,7 @@ html {
     color: var(--bs-body-color);
     transition: var(--transition-fast);
     font-weight: 500;
-    border-left: 3px solid transparent;
+    border-left: 4px solid transparent;
     padding-left: 1rem;
 }
 
@@ -257,7 +257,6 @@ html {
     background-color: rgba(var(--bs-primary-rgb), 0.2);
     border-color: var(--bs-border-color);
     border-left-color: var(--bs-primary);
-    border-left-width: 4px;
     color: var(--bs-primary);
     font-weight: 600;
 }
@@ -429,18 +428,13 @@ main {
 }
 
 /* Logout button styling */
-.logout-btn {
-    --bs-btn-color: var(--bs-danger);
-    --bs-btn-border-color: var(--bs-danger);
-    --bs-btn-hover-bg: var(--bs-danger);
-    --bs-btn-hover-border-color: var(--bs-danger);
-    --bs-btn-hover-color: white;
+.btn-outline-danger.logout-btn {
     border-width: 2px;
     font-weight: 600;
     transition: var(--transition-base);
 }
 
-.logout-btn:hover {
+.btn-outline-danger.logout-btn:hover {
     box-shadow: 0 4px 16px rgba(var(--bs-danger-rgb), 0.4);
     transform: translateY(-2px);
 }
