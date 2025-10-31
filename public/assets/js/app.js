@@ -54,7 +54,7 @@
   };
 })();
 
-// UI inicial: tooltips e menu ativo
+// UI inicial: tooltips, menu ativo, favicon e theme-color
 (function(){
   // Inicializa tooltips se Bootstrap estiver disponível
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
@@ -71,4 +71,28 @@
       if (current.startsWith(href)) link.classList.add('active');
     } catch(e) {}
   });
+
+  // Garante que o conteúdo principal receba o estilo de fundo da UI nova
+  const mainEl = document.querySelector('main');
+  if (mainEl && !mainEl.classList.contains('main-content')) {
+    mainEl.classList.add('main-content');
+  }
+
+  // Injeta meta theme-color e favicon, caso não existam
+  const head = document.head || document.getElementsByTagName('head')[0];
+
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    const meta = document.createElement('meta');
+    meta.setAttribute('name', 'theme-color');
+    meta.setAttribute('content', '#0b0d10');
+    head.appendChild(meta);
+  }
+
+  if (!document.querySelector('link[rel="icon"]')) {
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'icon');
+    link.setAttribute('type', 'image/svg+xml');
+    link.setAttribute('href', '/sistema_escalacao/public/assets/favicon.svg');
+    head.appendChild(link);
+  }
 })();
