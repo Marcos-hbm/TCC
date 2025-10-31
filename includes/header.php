@@ -42,7 +42,7 @@ if (!empty($_SESSION['user_id'])) {
 <div class="container-fluid">
 	<div class="row">
 		<aside class="col-12 col-md-3 col-lg-2 sidebar p-0 d-flex flex-column">
-			<div class="p-3 border-bottom d-flex align-items-center gap-2">
+			<div class="p-3 border-bottom d-flex align-items-center gap-2 sidebar-brand">
 				<?php
 					$avatarUrl = '';
 					if (!empty($_SESSION['user_id'])) {
@@ -52,9 +52,9 @@ if (!empty($_SESSION['user_id'])) {
 					}
 				?>
 				<?php if ($avatarUrl): ?>
-					<img src="<?= htmlspecialchars($avatarUrl) ?>" alt="avatar" class="rounded-circle" style="width:40px;height:40px;object-fit:cover;">
+					<img src="<?= htmlspecialchars($avatarUrl) ?>" alt="avatar" class="rounded-circle sidebar-avatar" style="width:40px;height:40px;object-fit:cover;">
 				<?php endif; ?>
-				<a class="text-decoration-none h5 mb-0" style="color: var(--bs-primary);" href="<?= !empty($_SESSION['empresa_id']) ? '/sistema_escalacao/public/eventos/index.php' : '/sistema_escalacao/public/users/discover.php' ?>">
+				<a class="text-decoration-none h5 mb-0 sidebar-title" href="<?= !empty($_SESSION['empresa_id']) ? '/sistema_escalacao/public/eventos/index.php' : '/sistema_escalacao/public/users/discover.php' ?>">
 					<i class="bi bi-calendar-event me-1"></i>Sistema de Escalação
 				</a>
 			</div>
@@ -90,13 +90,13 @@ if (!empty($_SESSION['user_id'])) {
 					</a>
 				<?php endif; ?>
 			</div>
-			<div class="p-3 border-top mt-auto">
+			<div class="p-3 border-top mt-auto sidebar-footer">
 				<?php if (!empty($_SESSION['user_id']) || !empty($_SESSION['empresa_id'])): ?>
-					<a class="btn btn-outline-light w-100" href="/sistema_escalacao/public/auth/logout.php">
+					<a class="btn btn-outline-danger w-100 logout-btn" href="/sistema_escalacao/public/auth/logout.php">
 						<i class="bi bi-box-arrow-right me-2"></i>Sair
 					</a>
 				<?php else: ?>
-					<a class="btn btn-outline-light w-100" href="/sistema_escalacao/public/auth/login.php">
+					<a class="btn btn-outline-primary w-100" href="/sistema_escalacao/public/auth/login.php">
 						<i class="bi bi-box-arrow-in-right me-2"></i>Entrar
 					</a>
 				<?php endif; ?>
