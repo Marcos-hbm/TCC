@@ -1,6 +1,5 @@
 <?php
 // ... existing code ...
-session_start();
 require_once __DIR__ . '/../config/db.php';
 
 $pendingVinculos = 0;
