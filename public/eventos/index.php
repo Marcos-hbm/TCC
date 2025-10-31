@@ -41,8 +41,10 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0">Meus Eventos</h1>
-	<a class="btn btn-success" href="/sistema_escalacao/public/eventos/form.php"><i class="bi bi-plus-circle me-2"></i>Novo Evento</a>
+	<h1 class="h3 mb-0"><i class="bi bi-calendar-check me-2"></i>Meus Eventos</h1>
+	<a class="btn btn-success" href="/sistema_escalacao/public/eventos/form.php">
+		<i class="bi bi-plus-circle me-1"></i>Novo Evento
+	</a>
 </div>
 <form class="card mb-3" method="get">
 	<div class="card-body">
@@ -60,7 +62,9 @@ $result = $stmt->get_result();
 				<input type="date" name="to" value="<?= htmlspecialchars($to) ?>" class="form-control">
 			</div>
 			<div class="col-md-2 d-grid">
-				<button class="btn btn-outline-primary" type="submit">Filtrar</button>
+				<button class="btn btn-outline-primary" type="submit">
+					<i class="bi bi-funnel me-1"></i>Filtrar
+				</button>
 			</div>
 		</div>
 	</div>
@@ -95,10 +99,14 @@ $result = $stmt->get_result();
                             </td>
 							<td>R$ <?= number_format((float)$row['valor_cache'], 2, ',', '.') ?></td>
 							<td class="text-end table-actions">
-								<a class="btn btn-sm btn-outline-secondary" href="/sistema_escalacao/public/eventos/form.php?id=<?= (int)$row['id'] ?>"><i class="bi bi-pencil me-1"></i>Editar</a>
+								<a class="btn btn-sm btn-outline-secondary" href="/sistema_escalacao/public/eventos/form.php?id=<?= (int)$row['id'] ?>">
+									<i class="bi bi-pencil"></i> Editar
+								</a>
 								<form action="/sistema_escalacao/public/eventos/delete.php" method="post" class="d-inline" onsubmit="return confirm('Deseja realmente excluir este evento?');">
 									<input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
-									<button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash me-1"></i>Excluir</button>
+									<button type="submit" class="btn btn-sm btn-outline-danger">
+										<i class="bi bi-trash"></i> Excluir
+									</button>
 								</form>
 							</td>
 						</tr>

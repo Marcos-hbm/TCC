@@ -27,19 +27,22 @@ if (!empty($_SESSION['user_id'])) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sistema de Escalação</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 5 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<!-- Bootstrap Icons -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-	<link href="/sistema_escalacao/public/assets/css/custom.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+	<!-- Custom Dark Theme -->
+	<link href="/sistema_escalacao/public/assets/css/styles.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
 	<div class="row">
 		<aside class="col-12 col-md-3 col-lg-2 sidebar p-0 d-flex flex-column">
-			<div class="p-3 border-bottom d-flex align-items-center gap-2">
+			<div class="p-3 border-bottom d-flex align-items-center gap-2 sidebar-brand">
 				<?php
 					$avatarUrl = '';
 					if (!empty($_SESSION['user_id'])) {
@@ -49,35 +52,53 @@ if (!empty($_SESSION['user_id'])) {
 					}
 				?>
 				<?php if ($avatarUrl): ?>
-					<img src="<?= htmlspecialchars($avatarUrl) ?>" alt="avatar" class="rounded-circle" style="width:40px;height:40px;object-fit:cover;">
+					<img src="<?= htmlspecialchars($avatarUrl) ?>" alt="avatar" class="rounded-circle sidebar-avatar" style="width:40px;height:40px;object-fit:cover;">
 				<?php endif; ?>
-				<a class="text-white text-decoration-none h5 mb-0 brand" href="<?= !empty($_SESSION['empresa_id']) ? '/sistema_escalacao/public/eventos/index.php' : '/sistema_escalacao/public/users/discover.php' ?>">Sistema de Escalação</a>
+				<a class="text-decoration-none h5 mb-0 sidebar-title" href="<?= !empty($_SESSION['empresa_id']) ? '/sistema_escalacao/public/eventos/index.php' : '/sistema_escalacao/public/users/discover.php' ?>">
+					<i class="bi bi-calendar-event me-1"></i>Sistema de Escalação
+				</a>
 			</div>
 			<div class="list-group list-group-flush flex-grow-1">
 				<?php if (!empty($_SESSION['empresa_id'])): ?>
-					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/eventos/index.php"><i class="bi bi-calendar-event me-2"></i>Meus Eventos</a>
-					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/empresa/inscricoes.php"><i class="bi bi-people me-2"></i>Parceiros</a>
+					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/eventos/index.php">
+						<i class="bi bi-calendar-check me-2"></i>Meus Eventos
+					</a>
+					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/empresa/inscricoes.php">
+						<i class="bi bi-people me-2"></i>Parceiros
+					</a>
 					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="/sistema_escalacao/public/vinculos/index.php">
 						<span><i class="bi bi-link-45deg me-2"></i>Vínculos</span>
 						<?= $pendingVinculos>0 ? '<span class="badge bg-warning text-dark">'.$pendingVinculos.'</span>' : '' ?>
 					</a>
-					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/empresas/profile.php?id=<?= (int)($_SESSION['empresa_id'] ?? 0) ?>"><i class="bi bi-building me-2"></i>Perfil</a>
+					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/empresas/profile.php?id=<?= (int)($_SESSION['empresa_id'] ?? 0) ?>">
+						<i class="bi bi-person-circle me-2"></i>Perfil
+					</a>
 				<?php elseif (!empty($_SESSION['user_id'])): ?>
-					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/users/discover.php"><i class="bi bi-compass me-2"></i>Descobrir Eventos</a>
+					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/users/discover.php">
+						<i class="bi bi-compass me-2"></i>Descobrir Eventos
+					</a>
 					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="/sistema_escalacao/public/vinculos/index.php">
 						<span><i class="bi bi-link-45deg me-2"></i>Vínculos</span>
 						<?= $pendingVinculos>0 ? '<span class=\"badge bg-warning text-dark\">'.$pendingVinculos.'</span>' : '' ?>
 					</a>
-					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/users/profile.php?id=<?= (int)($_SESSION['user_id'] ?? 0) ?>"><i class="bi bi-person me-2"></i>Perfil</a>
+					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/users/profile.php?id=<?= (int)($_SESSION['user_id'] ?? 0) ?>">
+						<i class="bi bi-person-circle me-2"></i>Perfil
+					</a>
 				<?php else: ?>
-					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/empresas/index.php"><i class="bi bi-building me-2"></i>Empresas</a>
+					<a class="list-group-item list-group-item-action" href="/sistema_escalacao/public/empresas/index.php">
+						<i class="bi bi-building me-2"></i>Empresas
+					</a>
 				<?php endif; ?>
 			</div>
-			<div class="p-3 border-top mt-auto">
+			<div class="p-3 border-top mt-auto sidebar-footer">
 				<?php if (!empty($_SESSION['user_id']) || !empty($_SESSION['empresa_id'])): ?>
-					<a class="btn btn-outline-light w-100" href="/sistema_escalacao/public/auth/logout.php"><i class="bi bi-box-arrow-right me-2"></i>Sair</a>
+					<a class="btn btn-outline-danger w-100 logout-btn" href="/sistema_escalacao/public/auth/logout.php">
+						<i class="bi bi-box-arrow-right me-2"></i>Sair
+					</a>
 				<?php else: ?>
-					<a class="btn btn-outline-light w-100" href="/sistema_escalacao/public/auth/login.php"><i class="bi bi-box-arrow-in-right me-2"></i>Entrar</a>
+					<a class="btn btn-outline-primary w-100" href="/sistema_escalacao/public/auth/login.php">
+						<i class="bi bi-box-arrow-in-right me-2"></i>Entrar
+					</a>
 				<?php endif; ?>
 			</div>
 		</aside>

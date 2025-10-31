@@ -28,7 +28,8 @@ c:\xampp\htdocs\sistema_escalacao\
      ├─ empresa\ (dashboard da empresa)
      ├─ empresas\ (CRUD de empresas e upload de logo)
      ├─ eventos\ (CRUD de eventos)
-     └─ users\ (CRUD de usuários e upload de foto)
+     ├─ users\ (CRUD de usuários e upload de foto)
+     └─ vinculos\ (gestão de vínculos)
 ```
 
 ## Instalação (Local com XAMPP)
@@ -198,6 +199,8 @@ Veja todos os ícones em: https://icons.getbootstrap.com/
 - Tema escuro em `public/assets/css/custom.css`.
 - Assets em `public/assets/`.
 - Endpoints públicos em `public/` (separados por módulo).
+- Use classes Bootstrap 5 ao invés de estilos inline.
+- Ícones devem usar Bootstrap Icons para consistência visual.
 
 ## Dicas de Desenvolvimento
 - Habilite exibição de erros no `php.ini` em ambiente local durante desenvolvimento.
